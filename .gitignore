@@ -208,3 +208,4 @@ FakesAssemblies/
 # LANDIS-II
 /src/lib/*.dll
 /src/.vs
+src/output-biomass-community.sln
