@@ -2,20 +2,20 @@
 
   <PropertyGroup>
     <RootNamespace>Landis.Extension.Output.BiomassCommunity</RootNamespace>
-    <AssemblyName>Landis.Extension.Output.BiomassCommunity-v2</AssemblyName>
-    <AssemblyTitle>Landis.Extension.Output.BiomassCommunity-v2</AssemblyTitle>
+    <AssemblyName>Landis.Extension.Output.BiomassCommunity-v3</AssemblyName>
+    <AssemblyTitle>Landis.Extension.Output.BiomassCommunity-v3</AssemblyTitle>
     <AssemblyCompany>Landis-II-Foundation</AssemblyCompany>
-    <AssemblyProduct>Landis.Extension.Output.BiomassCommunity-v2</AssemblyProduct>
+    <AssemblyProduct>Landis.Extension.Output.BiomassCommunity-v3</AssemblyProduct>
     <AssemblyCopyright>Landis-II-Foundation</AssemblyCopyright>
     <AssemblyVersion>2.0.2</AssemblyVersion>
-    <Version>2.0.2</Version>
-    <FileVersion>2.0.2</FileVersion>
+    <Version>3.0.0</Version>
+    <FileVersion>3.0.0</FileVersion>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RepositoryUrl>https://github.com/LANDIS-II-Foundation/Extension-Output-Biomass-Community</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <NeutralLanguage>English</NeutralLanguage>
     <Authors>Landis-II-Foundation</Authors>
-    <Product>Landis.Extension.Output.BiomassCommunity-v2</Product>
+    <Product>Landis.Extension.Output.BiomassCommunity-v3</Product>
     <Copyright>Landis-II-Foundation</Copyright>
     <Description>Output Biomass Community Extension</Description>
     <PackageTags>LANDIS-II;Landis;Extension;Output Biomass Community Extension</PackageTags>
@@ -26,21 +26,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Landis.Core" Version="2.0.0" />
+    <PackageReference Include="Landis.Core" Version="3.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Landis.Library.AgeOnlyCohorts-v3">
-      <HintPath>lib\Landis.Library.AgeOnlyCohorts-v3.dll</HintPath>
-    </Reference>
-    <Reference Include="Landis.Library.Biomass-v2">
-      <HintPath>lib\Landis.Library.Biomass-v2.dll</HintPath>
-    </Reference>
-    <Reference Include="Landis.Library.BiomassCohorts-v3">
-      <HintPath>lib\Landis.Library.BiomassCohorts-v3.dll</HintPath>
-    </Reference>
-    <Reference Include="Landis.Library.Cohorts-v2">
-      <HintPath>lib\Landis.Library.Cohorts-v2.dll</HintPath>
+    <Reference Include="Landis.Library.UniversalCohorts-v1">
     </Reference>
     <Reference Include="Landis.Library.Metadata-v2">
       <HintPath>lib\Landis.Library.Metadata-v2.dll</HintPath>
