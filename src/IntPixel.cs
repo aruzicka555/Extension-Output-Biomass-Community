@@ -4,11 +4,11 @@ using Landis.SpatialModeling;
 
 namespace Landis.Extension.Output.BiomassCommunity
 {
-    public class LongPixel : Pixel
+    public class IntPixel : Pixel
     {
-        public Band<long> MapCode  = "The numeric code for each raster cell";
+        public Band<int> MapCode  = "The numeric code for each raster cell";
 
-        public LongPixel()
+        public IntPixel()
         {
             SetBands(MapCode);
         }

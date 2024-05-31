@@ -35,7 +35,7 @@ CellLength  	100 << meters, 100 x 100 m = 1 ha
 
 >> 	Succession Extension     Initialization File
 >> 	--------------------     -------------------
-	"Biomass Succession"	biomass-succession-v5-inputs.txt
+	"Biomass Succession"	biomass-succession-v6-inputs.txt
 
 
 >> --------------------------

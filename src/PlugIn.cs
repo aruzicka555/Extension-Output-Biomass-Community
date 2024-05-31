@@ -74,7 +74,7 @@ namespace Landis.Extension.Output.BiomassCommunity
             //CreateCommunityMap();
             //      * Map is of the cell ID (int)
 
-            var initialMapCode = 3;
+            int initialMapCode = 3;
             int mapCode;
 
             // write to community csv
@@ -205,9 +205,9 @@ namespace Landis.Extension.Output.BiomassCommunity
             //PlugIn.ModelCore.UI.WriteLine("   Writing community biomass map to {1} ...", path);
             PlugIn.ModelCore.UI.WriteLine("   Writing community biomass map to {0} ...", path);
 
-            using (IOutputRaster<LongPixel> outputRaster = modelCore.CreateRaster<LongPixel>(path, modelCore.Landscape.Dimensions))
+            using (IOutputRaster<IntPixel> outputRaster = modelCore.CreateRaster<IntPixel>(path, modelCore.Landscape.Dimensions))
             {
-                LongPixel pixel = outputRaster.BufferPixel;
+                IntPixel pixel = outputRaster.BufferPixel;
                 foreach (Site site in PlugIn.ModelCore.Landscape.AllSites)
                 {
                     if (site.IsActive)
