@@ -19,6 +19,7 @@ namespace Landis.Extension.Output.BiomassCommunity
         private string outputMapName = "output-community-{timestep}.tif";
         public static StreamWriter CommunityLog; 
         public static StreamWriter CommunityCsv;
+        private bool mapCodeCreated = false;
 
         //---------------------------------------------------------------------
 
@@ -138,7 +139,10 @@ namespace Landis.Extension.Output.BiomassCommunity
             
             CommunityLog.Close();     
 
-            CreateCommunityMap();
+            if(!mapCodeCreated)
+                CreateCommunityMap();
+
+            mapCodeCreated = true;
         }
         //---------------------------------------------------------------------
 
@@ -177,7 +181,7 @@ namespace Landis.Extension.Output.BiomassCommunity
 
             try
             {
-                CommunityCsv = new StreamWriter(csvFileName);  // JOHN- Is this wrong?
+                CommunityCsv = new StreamWriter(csvFileName);  
             }
             catch (Exception err)
             {
