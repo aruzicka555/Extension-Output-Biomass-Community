@@ -261,3 +261,7 @@ testing/Core8-BioCommunity3.0/Metadata/Biomass Succession/Biomass Succession.xml
 testing/Core8-BioCommunity3.0/Landis-log.txt
 testing/Core8-BioCommunity3.0/Landis-climate-log.txt
 testing/Core8-BioCommunity3.0/Biomass-succession-log.csv
+testing/Core8-BioCommunity3.0/Metadata/Climate-Library/Future-Annual-Log_Metadata.xml
+testing/Core8-BioCommunity3.0/Metadata/Climate-Library/Spinup-Annual-Log_Metadata.xml
+testing/Core8-BioCommunity3.0/Climate-spinup-annual-log.csv
+testing/Core8-BioCommunity3.0/Climate-future-annual-log.csv
