@@ -1,9 +1,6 @@
 //  Authors:  Robert M. Scheller
 
-using Landis.Core;
-using Landis.Library.BiomassCohorts;
-using Landis.Library.Biomass;
-using System.Collections.Generic;
+using Landis.Library.UniversalCohorts;
 using Landis.SpatialModeling;
 
 namespace Landis.Extension.Output.BiomassCommunity
@@ -25,7 +22,7 @@ namespace Landis.Extension.Output.BiomassCommunity
         public static void Initialize()
         {
 
-            cohorts = PlugIn.ModelCore.GetSiteVar<ISiteCohorts>("Succession.BiomassCohorts");
+            cohorts = PlugIn.ModelCore.GetSiteVar<ISiteCohorts>("Succession.UniversalCohorts");
             MapCode = PlugIn.ModelCore.Landscape.NewSiteVar<int>();
 
             if (cohorts == null)

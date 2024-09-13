@@ -1,13 +1,9 @@
 //  Authors:  Robert M. Scheller
 
 using Landis.Core;
-using Landis.Utilities;
-using Landis.Library.BiomassCohorts;
+using Landis.Library.UniversalCohorts;
 using Landis.SpatialModeling;
-using Landis.Library.Biomass;
-using Landis.Library.Metadata;
 using System;
-using System.Collections.Generic;
 using System.IO;
 
 namespace Landis.Extension.Output.BiomassCommunity
@@ -20,9 +16,10 @@ namespace Landis.Extension.Output.BiomassCommunity
 
         private IInputParameters parameters;
         private static ICore modelCore;
-        private string outputMapName = "output-community-{timestep}.img";
+        private string outputMapName = "output-community-{timestep}.tif";
         public static StreamWriter CommunityLog; 
         public static StreamWriter CommunityCsv;
+        private bool mapCodeCreated = false;
 
         //---------------------------------------------------------------------
 
@@ -40,6 +37,11 @@ namespace Landis.Extension.Output.BiomassCommunity
                 return modelCore;
             }
         }
+        public override void AddCohortData()
+        {
+            return;
+        }
+
         //---------------------------------------------------------------------
 
         public override void LoadParameters(string dataFile, ICore mCore)
@@ -90,7 +92,7 @@ namespace Landis.Extension.Output.BiomassCommunity
                 {
                     foreach (ICohort cohort in species_cohort)
                     {
-                        CommunityCsv.WriteLine("{0},{1},{2},{3}", mapCode, species_cohort.Species.Name, cohort.Age, cohort.Biomass);
+                        CommunityCsv.WriteLine("{0},{1},{2},{3}", mapCode, species_cohort.Species.Name, cohort.Data.Age, cohort.Data.Biomass);
                     }
                 }
 
@@ -114,14 +116,14 @@ namespace Landis.Extension.Output.BiomassCommunity
                     bool firstCohort = true;  // first in the list
                     foreach (ICohort cohort in species_cohort)
                     {
-                        if (cohort.Biomass > 0)
+                        if (cohort.Data.Biomass > 0)
                         {
                             if(firstCohort)  // first cohort > 0 biomass
                             {
                                 CommunityLog.Write("{0} ", species_cohort.Species.Name);
                                 firstCohort = false;
                             }
-                            CommunityLog.Write("{0} ({1}) ", cohort.Age, cohort.Biomass);
+                            CommunityLog.Write("{0} ({1}) ", cohort.Data.Age, cohort.Data.Biomass);
                         }
                     }
                     CommunityLog.WriteLine();
@@ -137,13 +139,15 @@ namespace Landis.Extension.Output.BiomassCommunity
             
             CommunityLog.Close();     
 
-            CreateCommunityMap();
+            if(!mapCodeCreated)
+                CreateCommunityMap();
+
+            mapCodeCreated = true;
         }
         //---------------------------------------------------------------------
 
         private void InitializeLogCommunity()
         {
-            //string logFileName = string.Format("output-communities\\community-input-file-{0}.txt", ModelCore.CurrentTime);
             string logFileName = string.Format("community-input-file-{0}.txt", ModelCore.CurrentTime);
             PlugIn.ModelCore.UI.WriteLine("   Opening community log file \"{0}\" ...", logFileName);
 
@@ -177,7 +181,7 @@ namespace Landis.Extension.Output.BiomassCommunity
 
             try
             {
-                CommunityCsv = new StreamWriter(csvFileName);  // JOHN- Is this wrong?
+                CommunityCsv = new StreamWriter(csvFileName);  
             }
             catch (Exception err)
             {
@@ -202,7 +206,6 @@ namespace Landis.Extension.Output.BiomassCommunity
         private void CreateCommunityMap()
         {
             string path = MapNames.ReplaceTemplateVars(outputMapName, PlugIn.ModelCore.CurrentTime);
-            //PlugIn.ModelCore.UI.WriteLine("   Writing community biomass map to {1} ...", path);
             PlugIn.ModelCore.UI.WriteLine("   Writing community biomass map to {0} ...", path);
 
             using (IOutputRaster<IntPixel> outputRaster = modelCore.CreateRaster<IntPixel>(path, modelCore.Landscape.Dimensions))
