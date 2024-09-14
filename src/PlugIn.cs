@@ -92,7 +92,7 @@ namespace Landis.Extension.Output.BiomassCommunity
                 {
                     foreach (ICohort cohort in species_cohort)
                     {
-                        CommunityCsv.WriteLine("{0},{1},{2},{3}", mapCode, species_cohort.Species.Name, cohort.Data.Age, cohort.Data.Biomass);
+                        CommunityCsv.WriteLine("{0},{1},{2},{3},{4}", mapCode, species_cohort.Species.Name, cohort.Data.Age, cohort.Data.Biomass, cohort.Data.ANPP);
                     }
                 }
 
@@ -102,77 +102,46 @@ namespace Landis.Extension.Output.BiomassCommunity
             CommunityCsv.Close();
 
             // write to community log
-            InitializeLogCommunity();
+            //InitializeLogCommunity();
 
             mapCode = initialMapCode;
+            mapCode++;
 
-            foreach (ActiveSite site in PlugIn.ModelCore.Landscape)
-            {
-                CommunityLog.WriteLine("MapCode {0}", mapCode);
-                SiteVars.MapCode[site] = mapCode;
 
-                foreach (ISpeciesCohorts species_cohort in SiteVars.Cohorts[site])
-                {
-                    bool firstCohort = true;  // first in the list
-                    foreach (ICohort cohort in species_cohort)
-                    {
-                        if (cohort.Data.Biomass > 0)
-                        {
-                            if(firstCohort)  // first cohort > 0 biomass
-                            {
-                                CommunityLog.Write("{0} ", species_cohort.Species.Name);
-                                firstCohort = false;
-                            }
-                            CommunityLog.Write("{0} ({1}) ", cohort.Data.Age, cohort.Data.Biomass);
-                        }
-                    }
-                    CommunityLog.WriteLine();
-                }
-                //      * Assign to a Dictionary
-                //      * Each Dictionary entry has a unique ID
-                //      * The cell is assigned that ID
-                //      * If a community matches one from earlier in the list, give previous ID
-                //      * Output text file matching input from Landis.Library.Succession-vAGBinput.dll (AGB input branch in repo)
-                mapCode++;
-
-            }
-            
-            CommunityLog.Close();     
-
-            if(!mapCodeCreated)
+            if (!mapCodeCreated)
                 CreateCommunityMap();
 
             mapCodeCreated = true;
         }
         //---------------------------------------------------------------------
 
-        private void InitializeLogCommunity()
-        {
-            string logFileName = string.Format("community-input-file-{0}.txt", ModelCore.CurrentTime);
-            PlugIn.ModelCore.UI.WriteLine("   Opening community log file \"{0}\" ...", logFileName);
+        //private void InitializeLogCommunity()
+        //{
+        //    string logFileName = string.Format("community-input-file-{0}.txt", ModelCore.CurrentTime);
+        //    PlugIn.ModelCore.UI.WriteLine("   Opening community log file \"{0}\" ...", logFileName);
 
-            try
-            {
-                CommunityLog = new StreamWriter(logFileName);
-            }
-            catch (Exception err)
-            {
-                string mesg = string.Format("{0}", err.Message);
-                throw new System.ApplicationException(mesg);
-            }
+        //    try
+        //    {
+        //        CommunityLog = new StreamWriter(logFileName);
+        //    }
+        //    catch (Exception err)
+        //    {
+        //        string mesg = string.Format("{0}", err.Message);
+        //        throw new System.ApplicationException(mesg);
+        //    }
 
-            CommunityLog.AutoFlush = true;
+        //    CommunityLog.AutoFlush = true;
 
-            //Mapcode 0-2 typically reserved for outside the universe, water, or other.
-            CommunityLog.WriteLine("LandisData \"Initial Communities\"");  
-            CommunityLog.WriteLine();
-            CommunityLog.WriteLine("MapCode 0");
-            CommunityLog.WriteLine();
-            CommunityLog.WriteLine("MapCode 1");
-            CommunityLog.WriteLine();
-            CommunityLog.WriteLine("MapCode 2");
-            CommunityLog.WriteLine();
-        }
+        //    //Mapcode 0-2 typically reserved for outside the universe, water, or other.
+        //    CommunityLog.WriteLine("LandisData \"Initial Communities\"");  
+        //    CommunityLog.WriteLine();
+        //    CommunityLog.WriteLine("MapCode 0");
+        //    CommunityLog.WriteLine();
+        //    CommunityLog.WriteLine("MapCode 1");
+        //    CommunityLog.WriteLine();
+        //    CommunityLog.WriteLine("MapCode 2");
+        //    CommunityLog.WriteLine();
+        //}
 
         private void InitializeCsvCommunity()
         {
@@ -191,14 +160,14 @@ namespace Landis.Extension.Output.BiomassCommunity
 
             CommunityCsv.AutoFlush = true;
 
-            CommunityCsv.WriteLine("MapCode,SpeciesName,CohortAge,CohortBiomass");
+            CommunityCsv.WriteLine("MapCode,SpeciesName,CohortAge,CohortBiomass,CohortANPP");
         }
 
         //---------------------------------------------------------------------
 
-        private void LogCommunity()
-        {
-        }
+        //private void LogCommunity()
+        //{
+        //}
         
                 //---------------------------------------------------------------------
 
