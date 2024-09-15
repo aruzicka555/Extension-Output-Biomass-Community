@@ -10,7 +10,7 @@ namespace Landis.Extension.Output.BiomassCommunity
     /// </summary>
     public static class SiteVars
     {
-        private static ISiteVar<ISiteCohorts> cohorts;
+        private static ISiteVar<SiteCohorts> cohorts;
         public static ISiteVar<int> MapCode;
 
 
@@ -22,7 +22,7 @@ namespace Landis.Extension.Output.BiomassCommunity
         public static void Initialize()
         {
 
-            cohorts = PlugIn.ModelCore.GetSiteVar<ISiteCohorts>("Succession.UniversalCohorts");
+            cohorts = PlugIn.ModelCore.GetSiteVar<SiteCohorts>("Succession.UniversalCohorts");
             MapCode = PlugIn.ModelCore.Landscape.NewSiteVar<int>();
 
             if (cohorts == null)
@@ -33,7 +33,7 @@ namespace Landis.Extension.Output.BiomassCommunity
         }
 
         //---------------------------------------------------------------------
-        public static ISiteVar<ISiteCohorts> Cohorts
+        public static ISiteVar<SiteCohorts> Cohorts
         {
             get
             {
