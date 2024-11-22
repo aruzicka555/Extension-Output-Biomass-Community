@@ -7,9 +7,9 @@
     <AssemblyCompany>Landis-II-Foundation</AssemblyCompany>
     <AssemblyProduct>Landis.Extension.Output.BiomassCommunity-v3</AssemblyProduct>
     <AssemblyCopyright>Landis-II-Foundation</AssemblyCopyright>
-    <AssemblyVersion>3.0.0</AssemblyVersion>
-    <Version>3.0.0</Version>
-    <FileVersion>3.0.0</FileVersion>
+    <AssemblyVersion>3.0.1</AssemblyVersion>
+    <Version>3.0.1</Version>
+    <FileVersion>3.0.1</FileVersion>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RepositoryUrl>https://github.com/LANDIS-II-Foundation/Extension-Output-Biomass-Community</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

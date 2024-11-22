@@ -4,7 +4,7 @@ This extension generates new initial community inputs (text file and map) at spe
 
 # Release Notes
 
-- Latest official release: Version 3.0 — August 2024
+- Latest official release: Version 3.0.1 — November 2024
 - [User Guide](https://github.com/LANDIS-II-Foundation/Extension-Output-Biomass-Community/blob/master/docs/LANDIS-II%20Biomass%20Community%20Output%20v3.0%20User%20Guide.pdf).
 - Full release details are found in the User Guide and on GitHub.
 
@@ -17,7 +17,7 @@ To use this extension, you need:
 
 # Download and Install the Extension
 
-The latest version can be downloaded [here](https://github.com/LANDIS-II-Foundation/Extension-Output-Biomass-Community/blob/master/deploy/installer/LANDIS-II-V8%20Output%20Biomass%20Community%203.0-setup.exe). (Look for the download icon in the upper right corner.)  Launch the installer.
+The latest version can be downloaded [here](https://github.com/LANDIS-II-Foundation/Extension-Output-Biomass-Community/blob/master/deploy/installer/LANDIS-II-V8%20Output%20Biomass%20Community%203.0.1-setup.exe). (Look for the download icon in the upper right corner.)  Launch the installer.
 
 # Example Files
 

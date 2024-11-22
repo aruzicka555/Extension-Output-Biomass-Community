@@ -92,7 +92,7 @@ namespace Landis.Extension.Output.BiomassCommunity
                 {
                     foreach (ICohort cohort in species_cohort)
                     {
-                        CommunityCsv.WriteLine("{0},{1},{2},{3},{4}", mapCode, species_cohort.Species.Name, cohort.Data.Age, cohort.Data.Biomass, cohort.Data.ANPP);
+                        CommunityCsv.WriteLine("{0},{1},{2},{3},{4:0.0}", mapCode, species_cohort.Species.Name, cohort.Data.Age, cohort.Data.Biomass, cohort.Data.ANPP);
                     }
                 }
 
